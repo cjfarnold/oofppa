@@ -33,9 +33,11 @@ class habits():
              return res
         #return "done"
 
+    def updateHabit():
+        pass
     def list_habits():
     #    return "test"
-        hnames = models.habits.objects.values("name")
+        hnames = models.habits.objects.values("name","id")
         # nameslist =""
         # for n in hnames:
         #     nameslist+','+n['name']

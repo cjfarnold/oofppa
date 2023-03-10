@@ -25,5 +25,6 @@ class analytics(models.Model):
     habittype = models.CharField(max_length=50)
     streak = models.BooleanField()
     streakduration = models.IntegerField()
+    runinstance = models.IntegerField()
     updateddate = models.DateField()
     

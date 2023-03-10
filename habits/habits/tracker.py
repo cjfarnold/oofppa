@@ -1,5 +1,5 @@
 import habits.models as models
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, date
 
 class Tracker():
     
@@ -23,8 +23,8 @@ class Tracker():
                 if i == 0:
                     due = startdate
                 else:
-                    due = str(datetime.strptime(startdate,'%Y-%m-%d').date() + timedelta(days=i))
-                end = str(datetime.strptime(startdate,'%Y-%m-%d').date() + timedelta(days=duration))
+                    due = str(datetime.strptime(due,'%Y-%m-%d').date() + timedelta(days=1))
+                end = str(datetime.strptime(startdate,'%Y-%m-%d').date() + timedelta(days=duration-1))
                 t = models.tracker(habitid=models.habits.objects.get(id=habitid),
                                           htype=habittype,
                                           taskstate=self.task_state,
@@ -41,10 +41,11 @@ class Tracker():
             habittype = "weekly"
             for i  in range(0,duration):
                 if i == 0:
-                    due = self.due_date
+                    due = startdate
                 else:
-                    due = str(datetime.strptime(self.due_date,'%Y-%m-%d').date() + timedelta(days=i+7))
-                end = str(datetime.strptime(self.due_date,'%Y-%m-%d').date() + timedelta(days=duration*7))
+#                    due = str(datetime.strptime(startdate,'%Y-%m-%d').date() + timedelta(days=i+7))
+                    due = str(datetime.strptime(due,'%Y-%m-%d').date() + timedelta(weeks=1))
+                end = str(datetime.strptime(startdate,'%Y-%m-%d').date() + timedelta(weeks=(duration-1)))
                 t = models.tracker(habitid=models.habits.objects.get(id=habitid),
                                           htype=habittype,
                                           taskstate=self.task_state,
@@ -59,10 +60,81 @@ class Tracker():
         
 
 
-    def update_task(self):
-        pass
-    def compute_streak(self):
-        pass
+    def update_task(self, habitid, due_date, status ):
+        u = models.tracker.objects.filter(habitid=habitid,duedate=due_date).update(taskstate=status)
+        
+        if u:
+            return {"result":"success"}
+        else:
+            return {"result":"faild"}
+
+    def compute_streak(self, habitid):
+        count = models.tracker.objects.filter(habitid=habitid).count()
+        duedatelist= models.tracker.objects.filter(habitid=habitid).values_list("duedate")
+        l = []
+        result = []
+        run = 0
+        data = {"name":"","habittype":""}
+        for x in duedatelist:
+            l.append(str(datetime.strptime(str(x[0]),'%Y-%m-%d').date()))
+        cnt = 0
+        streaklist = []
+        for i in l:
+            
+            if models.tracker.objects.filter(duedate=i).values("taskstate") == True:
+                cnt =cnt + 1
+                if cnt >= 6:
+                    streak = True
+                    streaklenght = cnt
+                    #streaklist.append({"habitid":habitid,"streakcount":[].append(streakcount)})
+                    #cnt = 0
+                else:
+                    streak = False
+                    cnt = 0
+                    run = run + 1
+                    data = {"name":models.habits.objects.filter(habitid=habitid).values("name"),
+                            "habittype":models.habits.objects.filter(habitid=habitid).values("htype"),
+                            "streak":True,
+                            "streakduration":streaklenght,
+                            "runinstance":run,
+                            "updateddate":str(datetime.strptime(date.today(),'%Y-%m-%d').date())
+                            }
+            else:
+                if run >=1:
+                    result.append(data)
+
+        for data in result:
+            if models.analytics.objects.filter(habitid=habitid,runinstance=data["runinstance"]).values("habitid"):
+                res = models.analytics.objects.filter(habitid=habitid).update(habitid=models.habits.objects.get(habitid=habitid),
+                                                                        name=data["name"],
+                                                                        habittype=models.habits.objects.filter(habitid=habitid).values("htype"),
+                                                                        streak=data["streak"],
+                                                                        streakduration=data["streakduration"],
+                                                                        runinstance=data["runinstance"],
+                                                                        updateddate=data["updateddate"]
+                                                                        )
+                if res:
+                    return True
+                else:
+                    return False
+            else:
+                res = models.analytics(habitid=models.habits.objects.get(habitid=habitid),
+                                                                        name=data["name"],
+                                                                        habittype=models.habits.objects.filter(habitid=habitid).values("htype"),
+                                                                        streak=data["streak"],
+                                                                        streakduration=data["streakduration"],
+                                                                        runinstance=data["runinstance"],
+                                                                        updateddate=data["updateddate"]
+                                                                        )
+                res.save()
+                return True
+
+        return streaklist
+        #return l
+        #     duedate= models.tracker.objects.filter(habitid=habitid).values()["duedate"]
+        #     if
+        #return len(duedate)
+        
     def schedule_compute_streak(self):
         pass
 ''' 

@@ -20,5 +20,8 @@ import habits.views as views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('listhabits/', views.getHabits),
-    path('addhabits/', views.addHabits)
+    path('addhabits/', views.addHabits),
+    path('updatehabit/', views.updateHabit),
+    path('streak/<habitid>', views.streak)
+
 ]
