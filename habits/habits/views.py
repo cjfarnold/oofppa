@@ -43,3 +43,10 @@ def streak(request, habitid):
         tr = Tracker(htype="",task_state=False,due_date="2000-01-01",updated_date= "2000-01-01",start_date="2000-01-1",end_date="2000-01-1",habit_state= False)
         count = tr.compute_streak(habitid=habitid)
         return HttpResponse(count, content_type="application/json")
+    
+@csrf_exempt
+def streak_test(request, habitid):
+    if request.method == "GET":
+        tr = Tracker(htype="",task_state=False,due_date="2000-01-01",updated_date= "2000-01-01",start_date="2000-01-1",end_date="2000-01-1",habit_state= False)
+        result = tr.compute_streak(habitid)
+        return HttpResponse(result, content_type="application/json")
