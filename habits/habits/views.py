@@ -60,3 +60,23 @@ def sameperiodicity(request):
         rs = a.sameperiodicity()
         return JsonResponse(rs, safe=False)
 
+@csrf_exempt
+def longrunnstreak(request):
+    if request.method == 'GET':
+        a = Analytics()
+        rs = a.longrunnstreak()
+        return JsonResponse(rs, safe=False)
+
+@csrf_exempt
+def longrunstreakforhabit(request, habitid):
+    if request.method == "GET":
+        a = Analytics()
+        rs = a.longrunstreakforhabit(habitid)
+        return JsonResponse(rs, safe=False)
+
+@csrf_exempt
+def struggling(request):
+    if request.method == 'GET':
+        a = Analytics()
+        rs = a.struggling()
+        return JsonResponse(rs, safe=False)

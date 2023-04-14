@@ -24,6 +24,9 @@ urlpatterns = [
     path('updatehabit/', views.updateHabit),
     path('streak/<habitid>', views.streak),
     path('streak_test/<habitid>', views.streak_test),
-    path('sameperiodicity/', views.sameperiodicity)
+    path('sameperiodicity/', views.sameperiodicity),
+    path('longrunnstreak/', views.longrunnstreak),
+    path('longrunstreakforhabit/<habitid>', views.longrunstreakforhabit),
+    path('struggling/', views.struggling)
 
 ]
