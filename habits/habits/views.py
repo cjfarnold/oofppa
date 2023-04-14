@@ -80,3 +80,4 @@ def struggling(request):
         a = Analytics()
         rs = a.struggling()
         return JsonResponse(rs, safe=False)
+# Adding place holder

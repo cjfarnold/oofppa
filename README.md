@@ -24,13 +24,14 @@ Default habits
 • Hygiene – this is a daily task
 
 Success criteria
-• Allow the user to create a new habit - Done
-• Allow the user to update habit completed - Done
-• return the longest run streak for a given habit. - to Test
-• return a list of all currently tracked habits, - Done
-• return a list of all habits with the same periodicity, - WIP
-• return the longest run streak of all defined habits,
-• return the longest run streak for a given habit.
+• Allow the user to create a new habit - Done Done
+• Allow the user to update habit completed - Done Done
+• return the longest run streak for a given habit. - Done T
+• return a list of all currently tracked habits, - Done T
+• return a list of all habits with the same periodicity, - Done T
+• return the longest run streak of all defined habits - Done T
+• return the longest run streak for a given habit. - Done (duplicate)
+. list of the habits where the user was struggling with - Done T
 
 o list the successful streak for specified habit
 o list all currently tracked habits
@@ -38,3 +39,5 @@ o list of all habits with the same periodicity - Tracker table where the start d
 o list the successful streak across all habits - Analysis table where streak = true
 o list longest run streak for a given habit - Analysis table where the duration is the most
 o list of the habits where the user was struggling with - habits where there is no streak or least streaks 
+
+# Adding place holder

@@ -30,3 +30,4 @@ urlpatterns = [
     path('struggling/', views.struggling)
 
 ]
+# Adding place holder

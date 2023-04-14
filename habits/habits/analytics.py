@@ -27,3 +27,4 @@ class Analytics():
         return list(models.analytics.objects.filter(streakduration=maxsd).values('name','streakduration'))
     
 
+# Adding place holder
