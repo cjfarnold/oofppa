@@ -1,14 +1,15 @@
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 import json
 from habits.habit import habits
 from habits.tracker import Tracker
+from habits.analytics import Analytics
 
 def getHabits(request):
 
     if request.method == 'GET':
         hb = habits
-        return HttpResponse(hb.list_habits()) 
+        return JsonResponse(list(hb.list_habits()),safe=False)
 
 @csrf_exempt
 def addHabits(request):
@@ -50,3 +51,12 @@ def streak_test(request, habitid):
         tr = Tracker(htype="",task_state=False,due_date="2000-01-01",updated_date= "2000-01-01",start_date="2000-01-1",end_date="2000-01-1",habit_state= False)
         result = tr.compute_streak(habitid)
         return HttpResponse(result, content_type="application/json")
+    
+@csrf_exempt
+def sameperiodicity(request):
+    
+    if request.method == 'GET':
+        a = Analytics()
+        rs = a.sameperiodicity()
+        return JsonResponse(rs, safe=False)
+

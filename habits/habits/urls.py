@@ -23,6 +23,7 @@ urlpatterns = [
     path('addhabits/', views.addHabits),
     path('updatehabit/', views.updateHabit),
     path('streak/<habitid>', views.streak),
-    path('streak_test/<habitid>', views.streak_test)
+    path('streak_test/<habitid>', views.streak_test),
+    path('sameperiodicity/', views.sameperiodicity)
 
 ]

@@ -24,11 +24,11 @@ Default habits
 • Hygiene – this is a daily task
 
 Success criteria
-• Allow the user to create a new habit
-• Allow the user to update habit completed
-• return the longest run streak for a given habit.
-• return a list of all currently tracked habits,
-• return a list of all habits with the same periodicity,
+• Allow the user to create a new habit - Done
+• Allow the user to update habit completed - Done
+• return the longest run streak for a given habit. - to Test
+• return a list of all currently tracked habits, - Done
+• return a list of all habits with the same periodicity, - WIP
 • return the longest run streak of all defined habits,
 • return the longest run streak for a given habit.
 
