@@ -1,3 +1,9 @@
+'''
+This is the habits class file this is used to add a new habit to the application and create tracker enteries
+in the tracker model
+
+'''
+
 import habits.models as models
 from datetime import datetime, timedelta, date
 import habits.tracker as tracker
@@ -7,7 +13,9 @@ class habits():
         self.name = name
         self.htype = htype
         self.duration = duration
-    
+
+# This function is use to add habit into the habits table and call the tracker class add to tracker method which makes 
+# entries into the tracker table whic will be used to track the progress made to the habits     
     def add_habit(self):
         # dic = {
         #     "name":self.name,
@@ -33,13 +41,14 @@ class habits():
              return res
         #return "done"
 
-    def updateHabit():
-        pass
+    # def updateHabit():
+    #     pass
+
+# The list_habits() function is use to list the habits when the user wants to update the status of a particular habit
+#     
     def list_habits():
-    #    return "test"
+    
         hnames = models.habits.objects.values("name","id")
-        # nameslist =""
-        # for n in hnames:
-        #     nameslist+','+n['name']
+
         return hnames
     # Adding place holder

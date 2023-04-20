@@ -1,3 +1,13 @@
+'''
+This Class is the main component of the application it is used for multiple purposes
+1. when a user creates a habit it makes entiries in the tracker table based on the type and 
+duration of the habit
+2. when the user updates the habit it updates the tracker table and process the data to find
+out if a streak is achieved. if a streak is achieved an entry is made in the analytics table
+
+
+'''
+
 import habits.models as models
 from datetime import datetime, timedelta, date
 import pandas as pd
@@ -13,7 +23,9 @@ class Tracker():
         self.start_date = start_date
         self.end_date = end_date
         self.habit_state = habit_state
-    
+
+# This method is used to make entries into the tracker table
+
     def add_totracker(self,habitid,startdate,duration):
     #    print(self.htype,habitid,startdate,str(duration))
         if self.htype == "daily":
@@ -59,7 +71,8 @@ class Tracker():
             res = {"status":"added"}
             return res
         
-
+# This method is used to update the status of a habit and call the compute_streak funcation that computes
+# if a streak is achieved
 
     def update_task(self, habitid, due_date, status ):
         u = models.tracker.objects.filter(habitid=habitid,duedate=due_date).update(taskstate=status)
@@ -73,6 +86,9 @@ class Tracker():
             return {"result":"AnalyticsupdateFailed"}
 
 
+# This function computed the streak for a particular habit that is updated. Based on the result of the 
+# computation the analytics table is updated
+#
     def compute_streak(self, hid):
         taskstate_list = models.tracker.objects.filter(habitid=hid[0]).values_list("taskstate", flat=True)
         l = [i for i in taskstate_list]
