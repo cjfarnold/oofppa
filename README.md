@@ -1,43 +1,33 @@
-# oofppa
-Habit tracker backend app with cli front end
+# The Habit tracker app
 
-Loading data into the project
-(oofppa) PS C:\oofppa\habits> python .\manage.py makemigrations habits
-Migrations for 'habits':
-  habits\migrations\0001_initial.py
-    - Create model habits
-    - Create model tracker
-    - Create model analytics
-(oofppa) PS C:\oofppa\habits> python .\manage.py migrate habits
-Operations to perform:
-  Apply all migrations: habits
-Running migrations:
-  Applying habits.0001_initial... OK
-(oofppa) PS C:\oofppa\habits> python .\manage.py loaddata habits\data\habits.json
-Installed 5 object(s) from 1 fixture(s)
+This ia a habit tracker app that ebables user to track varrious habits on a daily or a weekly basis. The core of the application is implemented as back end django web application and the user interaction is driven through a menue driven command line interface based application. All habits are stored in a SqlLite data base this could be replacd with a more robust database if required
 
-Default habits
+The application allowes for the following functionality:
+
+• Allow the user to create a new habit
+• Allow the user to update a habit completed
+• return the longest run streak for a given habit
+• return a list of all currently tracked habits
+• return a list of all habits with the same periodicity
+• return the longest run streak of all defined habits
+• list of the habits where the user was struggling with
+
+
+The database comes with five preloaded habits:
+
 • Eat healthy – this is a daily task
 • Exercise – this is a daily task
 • Family Time – this is a weekly task
 • Hobby Time – this is a weekly task
 • Hygiene – this is a daily task
 
-Success criteria
-• Allow the user to create a new habit - Done Done
-• Allow the user to update habit completed - Done Done
-• return the longest run streak for a given habit. - Done T
-• return a list of all currently tracked habits, - Done T
-• return a list of all habits with the same periodicity, - Done T
-• return the longest run streak of all defined habits - Done T
-• return the longest run streak for a given habit. - Done (duplicate)
-. list of the habits where the user was struggling with - Done T
 
-o list the successful streak for specified habit
-o list all currently tracked habits
-o list of all habits with the same periodicity - Tracker table where the start data and end date are the same with the same type
-o list the successful streak across all habits - Analysis table where streak = true
-o list longest run streak for a given habit - Analysis table where the duration is the most
-o list of the habits where the user was struggling with - habits where there is no streak or least streaks 
+## Setting up and running the project
+This application is built using python and hence will require python 3.9.15 of greaater to run
+### Setup
+Install anaconda or python virtual environment, the development for this was done using the anaconda environment to install anaconda follow the steps outlined at the [Annaconda web site](https://www.anaconda.com) once installed make sure it is added to your environment, once done create a environment for the project in the following manner:
+open the terminal of choic and type 'conda create -n <your environment name> python=3.9.15' once this is done create a local directory of your choice once in that directory clone the project using git clone https://github.com/cjfarnold/oofppa.git  once the project is cloned go into the oofppa folder and and activate your environment using the following command 'conda activate <your environment name>' you will observe the name change at the head of the command prompt, nect install all the dependencies using the this command 'pip install -r requirements.txt' this will install all the dependent packages to run the application
 
-# Adding place holder
+### Running the application
+From within the oofppa folder run 'python \habits\manage.py runserver' this will start the django web server which will be listening on the default port. once you se the server has started, open a new terminal navigate to the project folder next activate the environment as mentioned in the setup section. Once you see the right environment in the command run this command 'python habits\habits\managehabits.py' this will start the CLI interface, this is driven by an intutive manue with select options which are easy to use
+
