@@ -32,5 +32,5 @@ open the terminal of choic and type ``conda create -n <your environment name> py
 
 ### Running the application.
 
-From within the oofppa folder run ``python \habits\manage.py runserver`` this will start the django web server which will be listening on the default port. once you se the server has started, open a new terminal navigate to the project folder next activate the environment as mentioned in the setup section. Once you see the right environment in the command run this command ``python habits\habits\managehabits.py`` this will start the CLI interface, this is driven by an intutive manue with select options which are easy to use.
+From within the oofppa folder run ``python \habits\manage.py runserver`` this will start the django web server which will be listening on the default port. once you se the server has started, open a new terminal navigate to the project folder next activate the environment as mentioned in the setup section. Once you see the right environment in the command run this command ``python habits\habits\managehabits.py`` this will start the CLI interface, this is driven by an intutive menu with select options which are easy to use.
 
