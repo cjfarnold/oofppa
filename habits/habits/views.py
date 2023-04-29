@@ -80,4 +80,12 @@ def struggling(request):
         a = Analytics()
         rs = a.struggling()
         return JsonResponse(rs, safe=False)
+
+@csrf_exempt
+def deletehabits(request):
+    if request.method == 'POST':
+        reqdata = request.body
+        data = json.loads(reqdata)
+        habitid = data['id']
+        return JsonResponse(habits.deletetestrecords(habitid),safe=False)
 # Adding place holder

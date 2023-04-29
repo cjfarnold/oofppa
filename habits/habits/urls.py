@@ -27,7 +27,8 @@ urlpatterns = [
     path('sameperiodicity/', views.sameperiodicity),
     path('longrunnstreak/', views.longrunnstreak),
     path('longrunstreakforhabit/<habitid>', views.longrunstreakforhabit),
-    path('struggling/', views.struggling)
+    path('struggling/', views.struggling),
+    path('deletetestrecords/',views.deletehabits)
 
 ]
 # Adding place holder

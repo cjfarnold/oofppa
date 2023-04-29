@@ -115,7 +115,7 @@ class Tracker():
                         }
                  
                  
-                res = models.analytics.filter(habitid=models.habits.objects.get(id=hid[0]),
+                res = models.analytics(habitid=models.habits.objects.get(id=hid[0]),
                                                                         name=data["name"],
                                                                         habittype=models.habits.objects.filter(id=hid[0]).values("htype")[0]['htype'],
                                                                         streak=data["streak"],

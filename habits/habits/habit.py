@@ -51,4 +51,14 @@ class habits():
         hnames = models.habits.objects.values("name","id")
 
         return hnames
+    
+    def deletetestrecords(id):
+        t= models.tracker.objects.filter(habitid=id)
+        t.delete()
+        a = models.analytics.objects.filter(habitid=id)
+        a.delete()
+        h = models.habits.objects.filter(id=id)
+        h.delete()
+        return "Success"
+    
     # Adding place holder
