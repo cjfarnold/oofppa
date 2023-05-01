@@ -61,13 +61,20 @@ Once you are within the oofppa project folder and your setup is done. Execute th
 
 The appllication comes with a pytest driven test cases, this test cases added a new habit with name "daily_t" updates the habit, checks if the streak are computed accurately and finally removes all the records pertaining to the "daily_t" habit from the database
 The test cases are configured to be discovered automatically when pytest is invoked. Below screenshot shows the test cases being executed.
+
     ```sh
-        (oofppa) clydearnold@MacBook-Pro habits % pytest   
+        (oofppa) clydearnold@MacBook-Pro habits % pytest
         ===================================================== test session starts ======================================================
+
         platform darwin -- Python 3.9.15, pytest-7.2.1, pluggy-1.0.0
+
         django: settings: habits.settings (from ini)
+
         rootdir: ~/oofppa/habits/habits, configfile: pytest.ini
+
         plugins: django-4.5.2
-        collected 4 items                                                                                                         test_cases.py ....                                                                                              [100%]
+
+        collected 4 items
+        test_cases.py ....                                                                                              [100%]
     ```
 
