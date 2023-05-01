@@ -25,11 +25,40 @@ The database comes with five preloaded habits:.
 
 This application is built using python and will require python 3.9.15 or grater to run.
 
-### Setup.
+### 1 Setup.
 
-Install anaconda or python virtual environment, the development for this was done using the anaconda environment to install anaconda follow the steps outlined at the [Annaconda website](https://www.anaconda.com) once installed make sure it is added to your environment, once done create an environment for the project in the following manner:.
-open the terminal of choice and type ``conda create -n <your environment name> python=3.9.15`` once this is done create a local directory of your choice once in that directory clone the project using ``git clone https://github.com/cjfarnold/oofppa.git`` once the project is cloned go into the oofppa folder and activate your environment using the following command ``conda activate <your environment name>`` you will observe the name change at the head of the command prompt, next install all the dependencies using this command ``pip install -r requirements.txt`` this will install all the dependent packages to run the application.
+This project was developed using the Annoconda distribution of Python. Annaconda could be installed form [Annaconda website](https://www.anaconda.com). Once the installation is done use the following steps to setup the environment.
+1. Start bash or command prompt
+2. Navigate to the folder where you wand to checked out this project
+    ```sh
+     # Clone the project using 
+     git clone https://github.com/cjfarnold/oofppa.git
+    ```
+3. Execute the follwing commands
+    ```sh
+        conda create -n <your environment name> python=3.9.15
+        conda activate <your environment name>
+        pip install -r requirements.txt
+    ```
+4. This completes the setup of the project
 
-### Running the application.
+### 2 Running the application.
+Once you are within the oofppa project folder and your setup is done. Execute the following commands in the same order to start using the application
+1. The application has two componentes 1. the Back end service running Django and 2. the user interface using a command line based navigation menu
+2. Start the application. note if you have multiple python version start the server using python3.9
+    ```sh
+        python3.9 \habits\manage.py runserver
+    ```
+    This starts the Django services
+3. Next open a new command prompt or bash, navigate to the folder and activate your environment
+    ```sh
+        conda activate <your environment name>
+        python3.9 \habits\habits\managehabits.py
+    ```
+4. This will start the application menu which can be used to perform varrious operation on the application 
 
-From within the oofppa folder run ``python \habits\manage.py runserver`` this will start the django web server which will be listening on the default port. once you see the server has started, open a new terminal navigate to the project folder next activate the environment as mentioned in the setup section. Once you see the right environment in the command run this command ``python habits\habits\managehabits.py`` this will start the CLI interface, which is driven by an intuitive menu with select options which are easy to use.
+### 3 Running test cases
+
+The appllication comes with a pytest driven test cases, this test cases added a new habit with name "daily_t" updates the habit, checks if the streak are computed accurately and finally removes all the records pertaining to the "daily_t" habit from the database
+The test cases are configured to be discovered automatically when pytest is invoked. Below screenshot shows the test cases being executed. 
+![alt tag](https://github.com/cjfarnold/oofppa/tree/main/habits/images/pytest.png "Screen shot of the test cases being run") 
