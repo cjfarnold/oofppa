@@ -55,7 +55,17 @@ From within the oofppa project folder after the setup is done. Execute the follo
         conda activate <your environment name>
         python3.9 \habits\habits\managehabits.py
     ```
-4. This will start the application menu which can be used to perform varrious operation on the application 
+4. This will start the application menu as depicted below, the user can then select an appopriate option to navigate to the operation of choice.
+    ```sh
+        (oofppa) clydearnold@MacBook-Pro habits % python3.9 managehabits.py 
+        ? Wellcome to Habit Tracker:
+        What would you like to do? (Use arrow keys)
+        » List all existing habits
+          Add a new Habit
+          Update a Habit
+          Analyze your Habits
+          Exit App
+    ```
 
 ### 3 Running test cases
 
