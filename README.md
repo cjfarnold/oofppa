@@ -29,12 +29,12 @@ This application is built using python and will require python 3.9.15 or grater 
 
 This project was developed using the Annoconda distribution of Python. Annaconda could be installed form [Annaconda website](https://www.anaconda.com). Once the installation is done use the following steps to setup the environment.
 1. Start bash or command prompt
-2. Navigate to the folder where you wand to checked out this project
+2. Navigate to the folder where you want to check out this project
     ```sh
      # Clone the project using 
      git clone https://github.com/cjfarnold/oofppa.git
     ```
-3. Execute the follwing commands
+3. Execute the follwing commands to configure your environment and install the dependencies
     ```sh
         conda create -n <your environment name> python=3.9.15
         conda activate <your environment name>
@@ -43,7 +43,7 @@ This project was developed using the Annoconda distribution of Python. Annaconda
 4. This completes the setup of the project
 
 ### 2 Running the application.
-Once you are within the oofppa project folder and your setup is done. Execute the following commands in the same order to start using the application
+From within the oofppa project folder after the setup is done. Execute the following commands in the same order to start using the application
 1. The application has two componentes 1. the Back end service running Django and 2. the user interface using a command line based navigation menu
 2. Start the application. note if you have multiple python version start the server using python3.9
     ```sh
@@ -59,22 +59,18 @@ Once you are within the oofppa project folder and your setup is done. Execute th
 
 ### 3 Running test cases
 
-The appllication comes with a pytest driven test cases, this test cases added a new habit with name "daily_t" updates the habit, checks if the streak are computed accurately and finally removes all the records pertaining to the "daily_t" habit from the database
-The test cases are configured to be discovered automatically when pytest is invoked. Below screenshot shows the test cases being executed.
+The appllication comes with pytest driven test cases, these test cases added a new habit with name "daily_t", updates the habit, checks if the streak are computed accurately and finally removes all the records pertaining to the "daily_t" habit from the database.
 
-    ```sh
-        (oofppa) clydearnold@MacBook-Pro habits % pytest
-        ===================================================== test session starts ======================================================
+The test cases are configured to be discovered automatically when pytest is invoked. The test cases are invoked by running the pytest command from within the ~\habits\habits folder as indicated below.
 
-        platform darwin -- Python 3.9.15, pytest-7.2.1, pluggy-1.0.0
-
-        django: settings: habits.settings (from ini)
-
-        rootdir: ~/oofppa/habits/habits, configfile: pytest.ini
-
-        plugins: django-4.5.2
-
-        collected 4 items
-        test_cases.py ....                                                                                              [100%]
-    ```
+```sh
+    (oofppa) clydearnold@MacBook-Pro habits % pytest
+    ================================================== test session starts ===========================================
+    platform darwin -- Python 3.9.15, pytest-7.2.1, pluggy-1.0.0
+    django: settings: habits.settings (from ini)
+    rootdir: ~/oofppa/habits/habits, configfile: pytest.ini
+    plugins: django-4.5.2
+    collected 4 items
+    test_cases.py ....                                                                                          [100%]
+```
 
